@@ -1,0 +1,9 @@
+{
+  "name": "jarmon-meisselin-severi",
+  "version": "0.0.0",
+  "description": "JarmonMeisselinSeveri",
+  "main": "server.js",
+  "author": {
+    "name": "Jaska"
+  }
+}
