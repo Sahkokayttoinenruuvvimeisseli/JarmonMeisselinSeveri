@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 var App = require('./components/app.js');
 var Persons = require("./components/Persons.js");
 var Person = require("./components/Person.js");
+var ToolUses = require("./components/ToolUses.js");
 //import App from "./components/app.js";
 
 //import Router from "react-router";
@@ -30,6 +31,7 @@ ReactDOM.render(
         <Route path="/Persons" component={Persons}/>
         <Route path="/Person" history={hashHistory} component={Person}/>
         <Route path="/Person/:personid" history={hashHistory} component={Person}/>
+        <Route path="/Tooluses" history={hashHistory} component={ToolUses} />
     </Router>,
     document.getElementById('root')
 );

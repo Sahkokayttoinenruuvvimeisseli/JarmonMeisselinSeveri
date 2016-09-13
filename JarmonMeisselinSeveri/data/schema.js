@@ -39,11 +39,26 @@ var Person = new GraphQLObjectType({
 var Tool = new GraphQLObjectType({
     name: "Tool",
     fields: {
+        Id: {
+            type: GraphQLInt
+        },
         Name: {
             type: GraphQLString
         },
         Tag: {
             type: GraphQLString
+        }
+    }
+});
+
+var ToolUse = new GraphQLObjectType({
+    name: "ToolUse",
+    fields: {
+        Person: {
+            type: Person
+        },
+        Tool: {
+            type: Tool
         }
     }
 });
@@ -144,6 +159,28 @@ const queryType = new GraphQLObjectType({
                             resolve(persons);
                         });
                     }
+                });
+            }
+        },
+        ToolUses: {
+            type: new GraphQLList(ToolUse),
+            args: {
+
+            },
+            resolve: function (_, args) {
+                return new Peromise(function (resolve, reject) {
+
+                });
+            }
+        },
+        InsertToolUse: {
+            type: ToolUse,
+            args: {
+
+            },
+            resolve: function (_, args) {
+                return new Promise(function (resolve, reject) {
+
                 });
             }
         }
