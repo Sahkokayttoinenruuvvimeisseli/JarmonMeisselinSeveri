@@ -30,17 +30,54 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="data\dbSchema.js" />
+    <Compile Include="data\schema.js" />
+    <Compile Include="js\app.js" />
+    <Compile Include="js\components\app.js" />
+    <Compile Include="js\components\Person.js" />
+    <Compile Include="js\components\Persons.js" />
+    <Compile Include="js\components\TagChooser.js" />
     <Compile Include="server.js" />
+    <Content Include=".babelrc" />
     <Content Include="package.json" />
+    <Content Include="public\index.html" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="js\components\" />
+    <Folder Include="data\" />
+    <Folder Include="public\" />
+    <Folder Include="js\" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\babel-core\" />
+    <Folder Include="typings\globals\express-graphql\" />
+    <Folder Include="typings\globals\express\" />
+    <Folder Include="typings\globals\mysql\" />
     <Folder Include="typings\globals\node\" />
+    <Folder Include="typings\globals\react-bootstrap\" />
+    <Folder Include="typings\globals\react-dom\" />
+    <Folder Include="typings\globals\react-responsive\" />
+    <Folder Include="typings\globals\react-router\" />
+    <Folder Include="typings\globals\react\" />
+    <Folder Include="typings\globals\sequelize\" />
+    <Folder Include="typings\globals\webpack-dev-server\" />
+    <Folder Include="typings\globals\webpack\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\babel-core\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\express-graphql\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\express\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\mysql\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\react-bootstrap\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\react-dom\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\react-responsive\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\react-router\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\react\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\sequelize\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\webpack-dev-server\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\webpack\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->

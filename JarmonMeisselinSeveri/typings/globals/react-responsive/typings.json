@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/d89e36830a99f44e9fa0d8bf0e9c1b106118aef1/react-responsive/react-responsive.d.ts",
+    "raw": "registry:dt/react-responsive#1.1.3+20160707075414",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/d89e36830a99f44e9fa0d8bf0e9c1b106118aef1/react-responsive/react-responsive.d.ts"
+  }
+}
