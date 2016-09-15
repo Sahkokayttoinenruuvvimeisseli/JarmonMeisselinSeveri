@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/434d7ebc70de28abfbd161b41f070efc8b2415c4/escape-html/escape-html.d.ts",
+    "raw": "registry:dt/escape-html#0.0.0+20160320155408",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/434d7ebc70de28abfbd161b41f070efc8b2415c4/escape-html/escape-html.d.ts"
+  }
+}
