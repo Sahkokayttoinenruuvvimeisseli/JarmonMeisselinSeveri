@@ -1,8 +1,10 @@
 ﻿
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('jarmonmeisseli', 'jaska', 'asdf321', {
-    host: 'localhost',
+var config = require('../config');
+
+var sequelize = new Sequelize(config.dbName, config.dbUser, config.dbPasswd, {
+    host: config.dbHost,
     omitNull: true
 });
 
