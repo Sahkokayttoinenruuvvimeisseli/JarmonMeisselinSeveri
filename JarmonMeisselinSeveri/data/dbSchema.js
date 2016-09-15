@@ -32,9 +32,6 @@ var Tool = sequelize.define("Tool", {
     },
     Name: {
         type: Sequelize.STRING
-    },
-    Tag: {
-        type: Sequelize.STRING
     }
 });
 
