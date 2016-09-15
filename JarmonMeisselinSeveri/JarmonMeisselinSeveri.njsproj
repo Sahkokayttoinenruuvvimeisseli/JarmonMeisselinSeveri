@@ -37,6 +37,8 @@
     <Compile Include="js\components\Person.js" />
     <Compile Include="js\components\Persons.js" />
     <Compile Include="js\components\TagChooser.js" />
+    <Compile Include="js\components\Tool.js" />
+    <Compile Include="js\components\Tools.js" />
     <Compile Include="js\components\ToolUses.js" />
     <Compile Include="server.js" />
     <Content Include=".babelrc" />

@@ -4,6 +4,8 @@ var React = require('react');
 
 import ReactDOM from 'react-dom';
 var App = require('./components/app.js');
+var Tools = require("./components/Tools.js");
+var Tool = require("./components/Tool.js");
 var Persons = require("./components/Persons.js");
 var Person = require("./components/Person.js");
 var ToolUses = require("./components/ToolUses.js");
@@ -32,6 +34,9 @@ ReactDOM.render(
         <Route path="/Person" history={hashHistory} component={Person}/>
         <Route path="/Person/:personid" history={hashHistory} component={Person}/>
         <Route path="/Tooluses" history={hashHistory} component={ToolUses} />
+        <Route path="/Tools" component={Tools} />
+        <Route path="/Tool" component={Tool}/>
+        <Route path="/Tool/:toolid" component={Tool} />
     </Router>,
     document.getElementById('root')
 );
