@@ -36,7 +36,6 @@ class Persons extends React.Component {
         },
         function (data) {
             if (data.data.Persons) {
-                console.log("loytyi");
                 this.state = {
                     Persons: data.data.Persons
                 }
@@ -60,7 +59,7 @@ class Persons extends React.Component {
             <div>
                 <h4>Henkilöt</h4>
                 <PersonList selectedPersonId={this.state.selectedPersonId} Persons={this.state.Persons} onPersonSelected={this.personSelected.bind(this)}/>
-                <Link to={"/person"}><Button>Luo uusi henkilö</Button></Link>
+                <Link style={{ clear: "both" }} to={"/person"}><Button>Luo uusi henkilö</Button></Link>
             </div>
         )
     }
@@ -96,6 +95,7 @@ class PersonList extends React.Component {
         return (
             <div>
                 {rows}
+                <div style={{clear: "both"}} />
             </div>
         )
     }
@@ -106,10 +106,11 @@ class PersonListItem extends React.Component {
     render() {
         var link = "/Person/" + this.props.Person.Id;
         return (
-            <Link to={link}>
-                <div style={{ border: "solid 1px black" }}>
-                    <h4>Etunimi: {this.props.Person.Firstname}</h4>
-                    <h4>Sukunimi: {this.props.Person.Lastname}</h4>
+            <Link to={link} style={{ textDecoration: "none", float: "left", margin: "20px" }}>
+                <div >
+                    <div>Etunimi: {this.props.Person.Firstname}</div>
+                    <div>Sukunimi: {this.props.Person.Lastname}</div>
+                    <div>Tag: {this.props.Person.Tag}</div>
                 </div>
             </Link>
         )

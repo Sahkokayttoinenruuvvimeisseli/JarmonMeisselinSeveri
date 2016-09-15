@@ -119,6 +119,9 @@ const queryType = new GraphQLObjectType({
                 },
                 Lastname: {
                     type: GraphQLString
+                },
+                Tag: {
+                    type: GraphQLString
                 }
             },
             resolve: function (_, args) {
@@ -127,6 +130,7 @@ const queryType = new GraphQLObjectType({
                         dbSchema.Person.findById(args.Personid).then(function (person) {
                             if (args.Firstname) person.Firstname = args.Firstname;
                             if (args.Lastname) person.Lastname = args.Lastname;
+                            if (args.Tag) person.Tag = args.Tag
                             person.save().then(function (person2) {
                                 resolve(person2);
                             });
@@ -176,11 +180,36 @@ const queryType = new GraphQLObjectType({
         InsertToolUse: {
             type: ToolUse,
             args: {
-
+                toolId: {
+                    type: GraphQLInt
+                },
+                personTag: {
+                    type: GraphQLInt
+                }
             },
             resolve: function (_, args) {
                 return new Promise(function (resolve, reject) {
+                    dbSchema.Tool.findAndCount({
+                        where: {
+                            Id: args.toolId
+                        }
+                    }).then(function (data) {
+                        if (data.count > 0) {
+                            dbSchema.Person.findAndCount({
+                                where: {
+                                    Tag: args.personTag
+                                }
+                            }).then(function (data) {
+                                if (data.count > 0) {
 
+                                } else {
+                                    console.log("Person not found");
+                                }
+                            });
+                        } else {
+                            console.log("Tool not found");
+                        }
+                    });
                 });
             }
         }

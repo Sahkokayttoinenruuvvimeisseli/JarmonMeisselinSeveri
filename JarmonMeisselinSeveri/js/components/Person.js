@@ -11,6 +11,7 @@ class Person extends React.Component {
             Personid: this.props.params.personid,
             Firstname: "",
             Lastname: "",
+            Tag: "",
             tagChooserExpanded: false
         }
         if (this.state.Personid) {
@@ -41,26 +42,28 @@ class Person extends React.Component {
             });
     }
 
-    editPerson(Personid, Firstname, Lastname) {
+    editPerson(data) {
         var that = this;
         var queryParameterns = "";
         var sendQuery = false;
 
-        if (Personid) {
-            queryParameterns += 'Personid:' + Personid;
+        if (data.Personid) {
+            queryParameterns += 'Personid:' + data.Personid;
             sendQuery = true;
         }
-        if (Firstname) {
-            queryParameterns += 'Firstname:"' + Firstname + '"';
+        if (data.Firstname) {
+            queryParameterns += 'Firstname:"' + data.Firstname + '"';
             sendQuery = true;
         }
-        if (Lastname) {
-            queryParameterns += ' Lastname:"' + Lastname + '"';
+        if (data.Lastname) {
+            queryParameterns += ' Lastname:"' + data.Lastname + '"';
             sendQuery = true;
+        }
+        if (data.Tag) {
+            queryParameterns += ' Tag:"' + data.Tag + '"';
         }
 
-
-        if (sendQuery && Personid) {
+        if (sendQuery && data.Personid) {
             $.post("./api",
                 {
                     query: '{ \
@@ -99,8 +102,11 @@ class Person extends React.Component {
         this.setState({
             Firstname: event.target.value
         });
-        this.forceUpdate();
-        this.editPerson(this.state.Personid, event.target.value, this.state.Lastname);
+
+        this.editPerson({
+            Personid: this.state.Personid,
+            Firstname: event.target.value
+        });
     }
 
     changeLastName(event) {
@@ -108,7 +114,20 @@ class Person extends React.Component {
             Lastname: event.target.value
         });
         this.forceUpdate();
-        this.editPerson(this.state.Personid, this.state.Firstname, event.target.value);
+        this.editPerson({
+            Personid: this.state.Personid,
+            Lastname: event.target.value
+        });
+    }
+
+    changeTag(event) {
+        this.setState({
+            Tag: event.target.value
+        });
+        this.editPerson({
+            Personid: this.state.Personid,
+            Tag: event.target.value
+        });
     }
 
     removePerson() {
@@ -143,7 +162,7 @@ class Person extends React.Component {
             <div style={{width: "50%"}} >
                 <input className="form-control" type="text" placeholder="Etunimi" value={this.state.Firstname} onChange={this.changeFirstName.bind(this) } /><br/>
                 <input className="form-control" type="text" placeholder="Sukunimi" value={this.state.Lastname} onChange={this.changeLastName.bind(this) } /><br/>
-                <TagChooser expanded={this.state.tagChooserExpanded} onExpandCLick={this.handleExpandClick.bind(this)}/>
+                <input className="form-control" type="text" placeholder="Tag" value={this.state.Tag} onChange={this.changeTag.bind(this)} />
                 <Button style={{ width: "50%" }} onClick={this.handleSave.bind(this) }>Tallenna</Button>
                 <Button style={{ width: "50%" }} onClick={this.removePerson.bind(this) }>Poista</Button>
             </div>

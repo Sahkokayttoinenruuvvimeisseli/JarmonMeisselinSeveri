@@ -25,7 +25,7 @@ class TagChooser extends React.Component {
             <div>
                 <Button onClick={this.handleClick.bind(this)}>Nappi</Button>
                 <div style={contentStyles} ref="tagItems">
-
+                    <TagItem/>
                 </div>
             </div>            
         )
@@ -33,14 +33,17 @@ class TagChooser extends React.Component {
 }
 
 class TagItem extends React.Component {
-    //constructor(props) {
-    //    super(props);
-    //}
+    constructor(props) {
+        super(props);
+
+
+
+    }
 
     render() {
         return (
             <div>
-
+                tag: 1000
             </div>
         )
     }
