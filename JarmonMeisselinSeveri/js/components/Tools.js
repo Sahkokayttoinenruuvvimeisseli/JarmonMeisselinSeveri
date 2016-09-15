@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 var Link = require('react-router').Link;
 var Button = require('react-bootstrap').Button;
+var NavLayout = require("./NavLayout");
 
 class Tools extends React.Component {
     constructor(props) {
@@ -12,9 +13,10 @@ class Tools extends React.Component {
     }
 
     findTools() {
+        var that = this;
         $.post("./api", {
             query: '{ \
-                Tools { Id Name Tag } \
+                Tools { Id Name } \
             }'
         }, function (data) {
             if (data.data.Tools) {
@@ -29,6 +31,8 @@ class Tools extends React.Component {
 
         return (
             <div>
+                <h4>Työkalu</h4>
+                <NavLayout />
                 <ToolList Tools={this.state.Tools} />
                 <Link to={"/Tool"}>
                     <Button>Luo uusi työkalu</Button>
@@ -46,8 +50,8 @@ class ToolList extends React.Component {
     render() {
         var rows = [];
 
-        this.props.Tools.forEach(function (person) {
-            rows.push(<ToolsListItem Person={person} />);
+        this.props.Tools.forEach(function (tool) {
+            rows.push(<ToolListItem Tool={tool} />);
         });
         return (
             <div>
@@ -63,7 +67,7 @@ class ToolListItem extends React.Component {
     }
     
     render() {
-        var link = "/Tools/" + this.props.Tool.Id;
+        var link = "/Tool/" + this.props.Tool.Id;
         return (
             <Link to={link} >
                 <div>

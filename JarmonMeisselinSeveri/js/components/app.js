@@ -1,10 +1,14 @@
 ﻿
 import React from 'react';
+var NavLayout = require("./NavLayout");
 
 class App extends React.Component {
     render() {
         return (
-            <h1>makkaraasdasdasdaaaa</h1>
+            <div>
+                <h1>Etusivu</h1>
+                <NavLayout />
+            </div>
         )
     }
 }

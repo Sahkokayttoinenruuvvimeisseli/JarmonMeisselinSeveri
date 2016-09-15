@@ -1,46 +1,69 @@
 ﻿import React from 'react';
+var NavLayout = require("./NavLayout");
 
 class ToolUses extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            Tooluses: []
+        };
+        this.findToolUsees();
+    }
+
+    findToolUsees() {
+        var that = this;
+        $.post("./api", {
+            query: '{ \
+                ToolUses {  } \
+            }' 
+        }, function (data) {
+
+        });
+
     }
 
     render() {
         return (
             <div>
-
-                asdasdasasdasdas
+                <h4>Leimaukset</h4>
+                <NavLayout />
+                <ToolUseList Tooluses={this.state.Tooluses} />
             </div>
         )
     }
 }
 
-class ToolUsesList extends React.Component {
+class ToolUseList extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
+        var rows = [];
+
+        this.props.Tooluses.forEach(function (toolUse) {
+            rows.push(<ToolUseListItem Tooluse={toolUse} />);
+        });
+
         return (
             <div>
-
-                asdasdasasdasdas
+                {rows}
             </div>
         )
     }
 }
 
-class ToolUsesListItem extends React.Component {
+class ToolUseListItem extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render() {
+        var link = "/Tooluse/" + this.props.Tooluse.Id;
         return (
-            <div>
+            <Link to={link}>
 
-                asdasdasasdasdas
-            </div>
+            </Link>
         )
     }
 }

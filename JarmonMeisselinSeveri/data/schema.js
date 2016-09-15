@@ -163,6 +163,70 @@ const queryType = new GraphQLObjectType({
                 });
             }
         },
+        Tools: {
+            type: new GraphQLList(Tool),
+            args: {
+                Toolid: {
+                    type: GraphQLInt
+                }
+            },
+            resolve: function (_, args) {
+                return new Promise(function (resolve, reject) {
+                    if (args.Toolid) {
+                        dbSchema.Tool.findAll({
+                            where: {
+                                Id: args.Toolid
+                            }
+                        }).then(function (tools) {
+                            resolve(tools);
+                        });
+                    } else {
+                        dbSchema.Tool.findAll({
+                        }).then(function (tools) {
+                            resolve(tools);
+                        });
+                    }
+                });
+            }
+        },
+        CreateTool: {
+            type: Tool,
+            args: {
+                Name: {
+                    type: GraphQLString
+                }
+            },
+            resolve: function (_, args) {
+                return new Promise(function (resolve, reject) {
+                    dbSchema.Tool.create({
+                        Name: ""
+                    }).then(function (tool) {
+                        resolve(tool);
+                    });
+                });
+            }
+        },
+        RemoveTool: {
+            type: GraphQLString,
+            args: {
+                Toolid: {
+                    type: GraphQLInt
+                }
+            },
+            resolve: function (_, args) {
+                if (args.Toolid) {
+                    return new Promise(function (resolve, reject) {
+                        dbSchema.Tool.destroy({
+                            where: {
+                                Id: args.Toolid
+                            },
+                        }).then(function () {
+                            resolve(args.Id);
+                        });
+                    });
+                }
+            }
+        },
         EditTool: {
             type: Tool,
             args: {
@@ -182,7 +246,7 @@ const queryType = new GraphQLObjectType({
                         dbSchema.Tool.findById(args.Toolid).then(function (tool) {
                             if (args.Name) tool.Name = args.Name;
                             if (args.Tag) tool.Tag = args.Tag;
-                            Tool.save().then(function (tool2) {
+                            tool.save().then(function (tool2) {
                                 resolve(tool2);
                             });
                         });
@@ -193,11 +257,16 @@ const queryType = new GraphQLObjectType({
         ToolUses: {
             type: new GraphQLList(ToolUse),
             args: {
-
+                Tooluseid: {
+                    type: GraphQLInt
+                }
             },
             resolve: function (_, args) {
-                return new Peromise(function (resolve, reject) {
-
+                return new Promise(function (resolve, reject) {
+                    dbSchema.ToolUsed.findAll({
+                    }).then(function (toolUses) {
+                        resolve(toolUses);
+                    });
                 });
             }
         },
@@ -225,13 +294,18 @@ const queryType = new GraphQLObjectType({
                                 where: {
                                     Tag: args.personTag
                                 }
-                            }).then(function (data) {
-                                if (data.count > 0) {
-                                    resolve("found");
+                            }).then(function (data2) {
+                                if (data2.count > 0) {
+                                    dbSchema.ToolUsed.create({
+                                        Person_id:  data2.rows[0].Id,
+                                        Tool_id: data.rows[0].Id
+                                    }).then(function (tooluse) {
+                                        resolve("onnistui");
+                                    });
                                 } else {
                                     console.log("Person not found");
                                 }
-                            });
+                                });
                         } else {
                             console.log("Tool not found");
                         }

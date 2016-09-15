@@ -2,6 +2,7 @@
 import React from 'react';
 var Button = require('react-bootstrap').Button;
 var TagChooser = require('./TagChooser.js');
+var NavLayout = require("./NavLayout");
 
 class Person extends React.Component {
     constructor(props) {
@@ -159,7 +160,8 @@ class Person extends React.Component {
     render() {
 
         return (
-            <div style={{width: "50%"}} >
+            <div style={{ width: "50%" }} >
+                <NavLayout />
                 <input className="form-control" type="text" placeholder="Etunimi" value={this.state.Firstname} onChange={this.changeFirstName.bind(this) } />
                 <input className="form-control" type="text" placeholder="Sukunimi" value={this.state.Lastname} onChange={this.changeLastName.bind(this) } />
                 <input className="form-control" type="text" placeholder="Tag" value={this.state.Tag} onChange={this.changeTag.bind(this)} />
