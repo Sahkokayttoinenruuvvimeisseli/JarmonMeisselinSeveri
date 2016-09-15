@@ -160,8 +160,8 @@ class Person extends React.Component {
 
         return (
             <div style={{width: "50%"}} >
-                <input className="form-control" type="text" placeholder="Etunimi" value={this.state.Firstname} onChange={this.changeFirstName.bind(this) } /><br/>
-                <input className="form-control" type="text" placeholder="Sukunimi" value={this.state.Lastname} onChange={this.changeLastName.bind(this) } /><br/>
+                <input className="form-control" type="text" placeholder="Etunimi" value={this.state.Firstname} onChange={this.changeFirstName.bind(this) } />
+                <input className="form-control" type="text" placeholder="Sukunimi" value={this.state.Lastname} onChange={this.changeLastName.bind(this) } />
                 <input className="form-control" type="text" placeholder="Tag" value={this.state.Tag} onChange={this.changeTag.bind(this)} />
                 <Button style={{ width: "50%" }} onClick={this.handleSave.bind(this) }>Tallenna</Button>
                 <Button style={{ width: "50%" }} onClick={this.removePerson.bind(this) }>Poista</Button>

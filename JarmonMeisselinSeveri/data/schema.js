@@ -44,9 +44,6 @@ var Tool = new GraphQLObjectType({
         },
         Name: {
             type: GraphQLString
-        },
-        Tag: {
-            type: GraphQLString
         }
     }
 });
@@ -166,6 +163,33 @@ const queryType = new GraphQLObjectType({
                 });
             }
         },
+        EditTool: {
+            type: Tool,
+            args: {
+                Toolid: {
+                    type: GraphQLInt
+                },
+                Name: {
+                    type: GraphQLString
+                },
+                Tag: {
+                    type: GraphQLString
+                }
+            },
+            resolve: function (_, args) {
+                return new Promise(function (resolve, reject) {
+                    if (args.Toolid) {
+                        dbSchema.Tool.findById(args.Toolid).then(function (tool) {
+                            if (args.Name) tool.Name = args.Name;
+                            if (args.Tag) tool.Tag = args.Tag;
+                            Tool.save().then(function (tool2) {
+                                resolve(tool2);
+                            });
+                        });
+                    }
+                });
+            }
+        },
         ToolUses: {
             type: new GraphQLList(ToolUse),
             args: {
@@ -178,17 +202,19 @@ const queryType = new GraphQLObjectType({
             }
         },
         InsertToolUse: {
-            type: ToolUse,
+            type: GraphQLString,
             args: {
                 toolId: {
                     type: GraphQLInt
                 },
                 personTag: {
-                    type: GraphQLInt
+                    type: GraphQLString
                 }
             },
             resolve: function (_, args) {
+                console.log("");
                 return new Promise(function (resolve, reject) {
+                    console.log("finding");
                     dbSchema.Tool.findAndCount({
                         where: {
                             Id: args.toolId
@@ -201,7 +227,7 @@ const queryType = new GraphQLObjectType({
                                 }
                             }).then(function (data) {
                                 if (data.count > 0) {
-
+                                    resolve("found");
                                 } else {
                                     console.log("Person not found");
                                 }
