@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 var NavLayout = require("./NavLayout");
+var Link = require('react-router').Link;
 
 class ToolUses extends React.Component {
     constructor(props) {
@@ -14,10 +15,18 @@ class ToolUses extends React.Component {
         var that = this;
         $.post("./api", {
             query: '{ \
-                ToolUses {  } \
+                ToolUses { \
+                    Person { Id Firstname Lastname } \
+                    Tool { Id Name } \
+                 } \
             }' 
-        }, function (data) {
-
+        }, function (res) {
+            if (res.data.ToolUses) {
+                console.log(res.data.ToolUses);
+                that.setState({
+                    Tooluses: res.data.ToolUses
+                });
+            }
         });
 
     }
@@ -62,7 +71,9 @@ class ToolUseListItem extends React.Component {
         var link = "/Tooluse/" + this.props.Tooluse.Id;
         return (
             <Link to={link}>
-
+                <div>Etunimi: {this.props.Tooluse.Person.Firstname}</div>
+                <div>Sukunimi: {this.props.Tooluse.Person.Lastname}</div>
+                <div>Tyokalunnimi: {this.props.Tooluse.Tool.Name}</div>
             </Link>
         )
     }

@@ -52,10 +52,24 @@ var ToolUse = new GraphQLObjectType({
     name: "ToolUse",
     fields: {
         Person: {
-            type: Person
+            type: Person,
+            resolve: function (obj) {
+                return new Promise(function (resolve, reject) {
+                    dbSchema.Person.findById(obj.dataValues.Person_id).then(function (person) {
+                        resolve(person);
+                    });
+                });
+            }
         },
         Tool: {
-            type: Tool
+            type: Tool,
+            resolve: function (obj) {
+                return new Promise(function (resolve, reject) {
+                    dbSchema.Tool.findById(obj.dataValues.Tool_id).then(function (tool) {
+                        resolve(tool);
+                    });
+                });
+            }
         }
     }
 });
@@ -79,7 +93,6 @@ const queryType = new GraphQLObjectType({
                         Firstname: args.Firstname,
                         Lastname: args.Lastname
                     }).then(function (person) {
-                        console.log("aas");
                         resolve(person);
                     });
                 });

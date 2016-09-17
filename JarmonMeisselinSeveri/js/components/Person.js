@@ -3,6 +3,9 @@ import React from 'react';
 var Button = require('react-bootstrap').Button;
 var TagChooser = require('./TagChooser.js');
 var NavLayout = require("./NavLayout");
+import { UploadManager } from 'react-file-uploader';
+import { Receiver } from 'react-file-uploader';
+import { UploadHandler } from 'react-file-uploader';
 
 class Person extends React.Component {
     constructor(props) {
@@ -157,14 +160,52 @@ class Person extends React.Component {
         }
     }
 
+    handleOnUploadEnd() {
+
+    }
+
+    handleIsOpen() {
+
+    }
+
+    handleOnDragEnter() {
+
+    }
+
+    handleOnDragLeave() {
+
+    }
+
+    handleOnFileDrop(e) {
+        console.log(e);
+    }
+
+    handleOnUploadEne() {
+
+    }
+
+    handleOnDragOver() {
+
+    }
+
     render() {
 
         return (
             <div style={{ width: "50%" }} >
                 <NavLayout />
-                <input className="form-control" type="text" placeholder="Etunimi" value={this.state.Firstname} onChange={this.changeFirstName.bind(this) } />
-                <input className="form-control" type="text" placeholder="Sukunimi" value={this.state.Lastname} onChange={this.changeLastName.bind(this) } />
-                <input className="form-control" type="text" placeholder="Tag" value={this.state.Tag} onChange={this.changeTag.bind(this)} />
+                
+                    <input className="form-control" type="text" placeholder="Etunimi" value={this.state.Firstname} onChange={this.changeFirstName.bind(this) } />
+                    <input className="form-control" type="text" placeholder="Sukunimi" value={this.state.Lastname} onChange={this.changeLastName.bind(this) } />
+                    <input className="form-control" type="text" placeholder="Tag" value={this.state.Tag} onChange={this.changeTag.bind(this) } />
+                    <form action="http://localhost:3001/" method="POST" encType="multipart/form-data">
+                        <input name="userPhoto" type="file" />
+                        <input type="submit"/>
+                    </form>
+                    <UploadManager uploadUrl="/upload"  uploadHeader={<h1>asd</h1>} onUploadEnd={this.handleOnUploadEnd}  />
+                    <Receiver isOpen={true} onDragOver={this.handleOnDragOver} onDragEnter={this.handleOnDragEnter} onDragLeave={this.handleOnDragLeave} onFileDrop={this.handleOnFileDrop}>
+                        <div>asd</div>
+                    </Receiver>
+                    
                 <Button style={{ width: "50%" }} onClick={this.handleSave.bind(this) }>Tallenna</Button>
                 <Button style={{ width: "50%" }} onClick={this.removePerson.bind(this) }>Poista</Button>
             </div>

@@ -16,6 +16,7 @@
 /// <reference path="globals/mime/index.d.ts" />
 /// <reference path="globals/minimatch/index.d.ts" />
 /// <reference path="globals/mkdirp/index.d.ts" />
+/// <reference path="globals/multer/index.d.ts" />
 /// <reference path="globals/mysql/index.d.ts" />
 /// <reference path="globals/node/index.d.ts" />
 /// <reference path="globals/object-assign/index.d.ts" />

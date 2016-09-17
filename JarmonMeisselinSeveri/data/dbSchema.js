@@ -51,15 +51,15 @@ var ToolUsed = sequelize.define("TooUsed", {
     }
 });
 
-ToolUsed.hasOne(Person, {
-    foreignKey: 'Person_id',
-    constraints: false
-});
+//ToolUsed.hasOne(Person, {
+//    foreignKey: 'Person_id',
+//    constraints: false
+//});
 
-ToolUsed.hasOne(Tool, {
-    foreignKey: 'Tool_id',
-    constraints: false
-});
+//ToolUsed.hasOne(Tool, {
+//    foreignKey: 'Tool_id',
+//    constraints: false
+//});
     
 
 sequelize.sync({ force: false }).then(function () {

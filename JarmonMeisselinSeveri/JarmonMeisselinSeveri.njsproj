@@ -35,9 +35,12 @@
     <Compile Include="data\schema.js" />
     <Compile Include="js\app.js" />
     <Compile Include="js\components\app.js" />
+    <Compile Include="js\components\NavLayout.js" />
     <Compile Include="js\components\Person.js" />
     <Compile Include="js\components\Persons.js" />
     <Compile Include="js\components\TagChooser.js" />
+    <Compile Include="js\components\Tool.js" />
+    <Compile Include="js\components\Tools.js" />
     <Compile Include="js\components\ToolUses.js" />
     <Compile Include="server.js" />
     <Content Include=".babelrc" />
@@ -69,6 +72,7 @@
     <Folder Include="typings\globals\mime\" />
     <Folder Include="typings\globals\minimatch\" />
     <Folder Include="typings\globals\mkdirp\" />
+    <Folder Include="typings\globals\multer\" />
     <Folder Include="typings\globals\mysql\" />
     <Folder Include="typings\globals\node\" />
     <Folder Include="typings\globals\object-assign\" />
@@ -100,6 +104,7 @@
     <TypeScriptCompile Include="typings\globals\mime\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\minimatch\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\mkdirp\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\multer\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\mysql\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\object-assign\index.d.ts" />
